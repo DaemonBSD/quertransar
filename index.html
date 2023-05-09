@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quer transar hoje Rai?</title>
+	<style>
+		body {
+			text-align: center;
+			margin-top: 100px;
+			font-size: 32px;
+			background-color: #222;
+			color: #fff;
+		}
+		button {
+			padding: 20px 40px;
+			margin: 40px;
+			font-size: 24px;
+			border-radius: 10px;
+			border: none;
+			background-color: #4CAF50;
+			color: #fff;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		button:hover {
+			background-color: #3e8e41;
+			transform: scale(1.05);
+		}
+		#no {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 24px;
+			color: red;
+			transition: all 0.3s ease;
+		}
+		#no:hover {
+			transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+		}
+	</style>
+</head>
+<body>
+	<h1>Quer transar hoje?</h1>
+	<button id="yes" onclick="window.location.href='https://www.youtube.com/watch?v=aZliA5yVjWU'">Sim</button>
+	<button id="no" onmouseover="moveButton()">Não</button>
+	
+	<script>
+		function moveButton() {
+			const noButton = document.getElementById("no");
+			const windowHeight = window.innerHeight;
+			const windowWidth = window.innerWidth;
+			const buttonHeight = noButton.offsetHeight;
+			const buttonWidth = noButton.offsetWidth;
+			const newTop = Math.floor(Math.random() * (windowHeight - buttonHeight));
+			const newLeft = Math.floor(Math.random() * (windowWidth - buttonWidth));
+			noButton.style.top = newTop + "px";
+			noButton.style.left = newLeft + "px";
+			const noTexts = ["Não", "Nunca", "Jamais", "Nem pensar", "Negativo", "De jeito nenhum","Haha"];
+			noButton.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+		}
+	</script>
+</body>
+</html>
