@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quer transar hoje Rai?</title>
+	<title>Quer transar hoje?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 		body {
 			text-align: center;
@@ -9,6 +10,7 @@
 			font-size: 32px;
 			background-color: #222;
 			color: #fff;
+			overflow: hidden;
 		}
 		button {
 			padding: 20px 40px;
@@ -37,12 +39,25 @@
 		#no:hover {
 			transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
 		}
+		@media only screen and (max-width: 600px) {
+			body {
+				font-size: 24px;
+			}
+			button {
+				padding: 15px 30px;
+				margin: 20px;
+				font-size: 20px;
+			}
+			#no {
+				font-size: 20px;
+			}
+		}
 	</style>
 </head>
 <body>
 	<h1>Quer transar hoje?</h1>
 	<button id="yes" onclick="window.location.href='https://www.youtube.com/watch?v=aZliA5yVjWU'">Sim</button>
-	<button id="no" onmouseover="moveButton()">Não</button>
+	<button id="no" onclick="moveButton()" onmousemove="moveButton()">Não</button>
 	
 	<script>
 		function moveButton() {
@@ -55,8 +70,22 @@
 			const newLeft = Math.floor(Math.random() * (windowWidth - buttonWidth));
 			noButton.style.top = newTop + "px";
 			noButton.style.left = newLeft + "px";
-			const noTexts = ["Não", "Nunca", "Jamais", "Nem pensar", "Negativo", "De jeito nenhum","Haha"];
+			const noTexts = ["Não", "Nunca", "Jamais", "Nem pensar", "Negativo", "De jeito nenhum"];
 			noButton.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+			enlargeYes();
+		}
+		
+		function enlargeYes() {
+			const yesButton = document.getElementById("yes");
+			const windowWidth = window.innerWidth;
+			const windowHeight = window.innerHeight;
+			const buttonWidth = yesButton.offsetWidth;
+			const buttonHeight = yesButton.offsetHeight;
+			const newWidth = Math.min(windowWidth, windowHeight) - 80;
+			const newHeight = newWidth * (buttonHeight / buttonWidth);
+			yesButton.style.width = newWidth + "px";
+			yesButton.style.height = newHeight + "px";
+			yesButton.style.fontSize = (newHeight / 3) + "px";
 		}
 	</script>
 </body>
